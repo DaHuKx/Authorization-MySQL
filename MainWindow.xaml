@@ -1,0 +1,146 @@
+﻿<Window x:Class="Launch.MainWindow"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Launch"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        mc:Ignorable="d" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Width="400"
+        Height="450"
+        ShowInTaskbar="True">
+    <Border x:Name="AutorizationBorder" CornerRadius="20" MaxWidth="400" MaxHeight="450" BorderBrush="White" BorderThickness="3" HorizontalAlignment="Left" MinWidth="400">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" x:Name="Toolbar" Background="Transparent" MouseDown="Toolbar_MouseDown">
+                <Label x:Name="ExitButton"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Content="x"
+                       Style="{StaticResource MaterialDesignLabel}"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Margin="0, 0, 10, 0"
+                       MouseEnter="AnyControlMouseEnter"
+                       MouseLeave="AnyControlMouseLeave"
+                       MouseDown="ExitButton_MouseDown"/>
+                <Label x:Name="MinimizeButton"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Margin="0, -2, 30, 0"
+                       Content="_"
+                       Style="{StaticResource MaterialDesignLabel}"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       MouseEnter="AnyControlMouseEnter"
+                       MouseLeave="AnyControlMouseLeave"
+                       MouseDown="MinimizeButton_MouseDown"/>
+                <TextBlock Text="SomeLaunch"
+                           HorizontalAlignment="Center"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="White" />
+                <TextBlock Text="Авторизация"
+                           HorizontalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           Margin="0, 30, 0, 0" />
+            </Grid>
+            <Grid Name="TextBoxes" Grid.Row="1">
+                <StackPanel>
+                    <TextBox x:Name="LoginBox"
+                             Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                             HorizontalAlignment="Center"
+                             MinWidth="200"
+                             MaxWidth="250"
+                             Margin="0, 40, 0, 0"
+                             FontSize="17"
+                             materialDesign:HintAssist.Hint="Логин"
+                             CaretBrush="White"
+                             Foreground="White"
+                             SelectionBrush="White"
+                             BorderBrush="#89FFFFFF"
+                             TextChanged="LoginBox_TextChanged"/>
+                    <PasswordBox x:Name="PasswordBox"
+                                 Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}"
+                                 HorizontalAlignment="Center"
+                                 MinWidth="200"
+                                 MaxWidth="250"
+                                 Margin="0, 0, 0, 0"
+                                 FontSize="17"
+                                 materialDesign:HintAssist.Hint="Пароль"
+                                 CaretBrush="White"
+                                 Foreground="White"
+                                 SelectionBrush="White"
+                                 BorderBrush="#89FFFFFF"
+                                 KeyDown="PasswordBox_KeyDown"/>
+                </StackPanel>
+            </Grid>
+            <Grid Name="Button" Grid.Row="2">
+                <Button x:Name="LoginButton"
+                        Content="Войти"
+                        Width="100"
+                        FontWeight="Normal"
+                        Background="#FFC007B3"
+                        Margin="0, 0, 0, 0"
+                        VerticalContentAlignment="Center"
+                        UseLayoutRounding="False"
+                        MouseLeave="AnyControlMouseLeave"
+                        MouseEnter="AnyControlMouseEnter"
+                        BorderBrush="White"
+                        Foreground="#DDFFFFFF"
+                        Click="Button_Login_Click"
+                        materialDesign:ButtonAssist.CornerRadius="15"/>
+            </Grid>
+            <Grid Name="Forget_And_RegButtons" Grid.Row="3">
+                <StackPanel>
+                    <Label x:Name="LabelForgPas"
+                           Content="Забыли пароль?"
+                           Style="{StaticResource MaterialDesignLabel}"
+                           FontWeight="Normal" Foreground="White"
+                           Margin="0, 5, 0, 0" Width="140"
+                           HorizontalContentAlignment="Center"
+                           Cursor="Hand"
+                           MouseDown="LabelForgPas_MouseDown"
+                           MouseEnter="AnyControlMouseEnter"
+                           MouseLeave="AnyControlMouseLeave"/>
+                    <Label x:Name="LabelRegister"
+                           Content="Регистрация"
+                           Style="{StaticResource MaterialDesignLabel}"
+                           FontWeight="Normal"
+                           Foreground="White"
+                           Margin="0, 50, 0, 0"
+                           Width="110"
+                           HorizontalContentAlignment="Center"
+                           Cursor="Hand"
+                           MouseDown="LabelRegister_MouseDown"
+                           MouseEnter="AnyControlMouseEnter"
+                           MouseLeave="AnyControlMouseLeave"/>
+                </StackPanel>
+                <materialDesign:Snackbar
+                x:Name="Snackbar"
+                MessageQueue="{materialDesign:MessageQueue}" 
+                Background="#FF9543D8"
+                HorizontalContentAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1">
+                <GradientStop Color="#FF7700FF" Offset="0"/>
+                <GradientStop Color="#FFFFB200" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+    </Border>
+</Window>
